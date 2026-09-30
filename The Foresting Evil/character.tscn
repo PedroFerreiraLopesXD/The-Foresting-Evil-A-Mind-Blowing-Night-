@@ -1,0 +1,107 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl3jg7rul0dep"]
+
+[sub_resource type="GDScript" id="GDScript_vu45j"]
+script/source = "extends CharacterBody3D
+
+var speed: float = WALK_SPEED
+const WALK_SPEED = 1.5
+const SPRINT_SPEED = 5.0
+const SENSITIVITY = 0.003
+
+@export var max_stamina := 100.0
+@export var stamina := 100.0
+@export var stamina_regen_delay := 1.5
+var regen_timer := 0.0
+@export var stamina_drain := 20.0
+@export var stamina_regen := 15.0
+@onready var stamina_bar: ProgressBar = $\"../stamina\"
+
+var is_running := false
+
+const BOB_FREQ = 5.0
+const BOB_AMP = 0.1
+var t_bob = 0.0
+var camera_base_pos: Vector3
+
+var gravity = 9.8
+
+@onready var cabeça = $\"cabeça\"
+@onready var camera = $\"cabeça/Camera3D\"
+
+func _ready():
+	camera_base_pos = camera.position
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _unhandled_input(event):
+	if event is InputEventMouseMotion:
+		cabeça.rotate_y(-event.relative.x * SENSITIVITY)
+		camera.rotate_x(-event.relative.y * SENSITIVITY)
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	
+	if is_running:
+		stamina -= stamina_drain * delta
+		regen_timer = stamina_regen_delay
+	else:
+		if regen_timer > 0:
+			regen_timer -= delta
+		else:
+			stamina += stamina_regen * delta
+	stamina = clamp(stamina, 0.0, max_stamina)
+	
+	if Input.is_action_pressed(\"corra\") and stamina > 0:
+		speed = SPRINT_SPEED
+		is_running = true
+	else:
+		speed = WALK_SPEED
+		is_running = false
+
+	var input_dir := Input.get_vector(\"esquerda\", \"direita\", \"frente\", \"tras\")
+	var direction: Vector3 = (cabeça.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if is_on_floor():
+		if direction:
+			velocity.x = direction.x * speed
+			velocity.z = direction.z * speed
+		else:
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
+	else:
+		velocity.x = lerp(velocity.x, direction.x * speed, delta * 2.0)
+		velocity.z = lerp(velocity.z, direction.z * speed, delta * 2.0)
+	
+	t_bob += delta * velocity.length() * float(is_on_floor())
+	camera.position = camera_base_pos + _headbob(t_bob)
+	
+	move_and_slide()
+
+func _headbob(time) -> Vector3:
+	var pos = Vector3.ZERO
+	pos.y = sin(time * BOB_FREQ) * BOB_AMP
+	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
+	return pos 
+"
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_glpr6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pjt0s"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = SubResource("GDScript_vu45j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 2
+mesh = SubResource("CapsuleMesh_glpr6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_pjt0s")
+
+[node name="cabeça" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0879202, -0.09869194)
+
+[node name="Camera3D" type="Camera3D" parent="cabeça"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3588462, -0.07662928)
