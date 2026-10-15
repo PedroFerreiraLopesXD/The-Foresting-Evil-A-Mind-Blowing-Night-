@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cl3jg7rul0dep"]
+[gd_scene format=3 uid="uid://cl3jg7rul0dep"]
 
 [sub_resource type="GDScript" id="GDScript_vu45j"]
 script/source = "extends CharacterBody3D
@@ -6,6 +6,7 @@ script/source = "extends CharacterBody3D
 var speed: float = WALK_SPEED
 const WALK_SPEED = 1.5
 const SPRINT_SPEED = 5.0
+const CROUCH_SPEED = 0.8
 const SENSITIVITY = 0.003
 
 @export var max_stamina := 100.0
@@ -28,10 +29,25 @@ var gravity = 9.8
 @onready var cabeça = $\"cabeça\"
 @onready var camera = $\"cabeça/Camera3D\"
 
+@onready var colisao: CollisionObject3D = $CollisionShape3D
+@onready var teto: RayCast3D = $RayCasteto
+const ALTURA_AGACHADO_MULT = 0.55
+const CROUCH_LERP = 10.0
+var agachado := false
+var altura_normal: float
+var altura_agachado: float
+var colisao_y_normal: float
+var cabeca_y_normal: float
+
 func _ready():
 	camera_base_pos = camera.position
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	var capsula := colisao.shape as CapsuleShape3D
+	altura_normal = capsula.height
+	altura_agachado = altura_normal * ALTURA_AGACHADO_MULT
+	colisao_y_normal = colisao.position.y
+	cabeca_y_normal = cabeça.position.y
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -43,6 +59,12 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	
+	if Input.is_action_just_pressed(\"agachar\"):
+		agachado = true
+	elif agachado and not teto.is_colliding():
+		agachado = false
+	
 	
 	if is_running:
 		stamina -= stamina_drain * delta
@@ -90,18 +112,22 @@ func _headbob(time) -> Vector3:
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pjt0s"]
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1164453538]
 script = SubResource("GDScript_vu45j")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=769561240]
+visible = false
 layers = 2
 mesh = SubResource("CapsuleMesh_glpr6")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=706031554]
 shape = SubResource("CapsuleShape3D_pjt0s")
 
-[node name="cabeça" type="Node3D" parent="."]
+[node name="cabeça" type="Node3D" parent="." unique_id=1426175020]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0879202, -0.09869194)
 
-[node name="Camera3D" type="Camera3D" parent="cabeça"]
+[node name="Camera3D" type="Camera3D" parent="cabeça" unique_id=1033830822]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3588462, -0.07662928)
+
+[node name="RayCasteto" type="RayCast3D" parent="." unique_id=1992826392]
+target_position = Vector3(0, 1, 0)

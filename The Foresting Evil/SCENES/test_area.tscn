@@ -14,6 +14,21 @@
 [ext_resource type="PackedScene" uid="uid://cuk7kipx33ry8" path="res://ASSETS/okuu_plushes/okuu_most_smol_file/scene.gltf" id="12_vtmr8"]
 [ext_resource type="Shader" uid="uid://b3m0un5gsnlj7" path="res://psx_tela.gdshader" id="13_r2ldl"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r2ldl"]
+sky_top_color = Color(0.70697314, 0.75986606, 0.83071184, 1)
+sky_horizon_color = Color(0.9108719, 0.9090196, 0.9145044, 1)
+ground_bottom_color = Color(0.13716576, 0.0768633, 0.02795683, 1)
+ground_horizon_color = Color(0.9108719, 0.9090196, 0.9145044, 1)
+
+[sub_resource type="Sky" id="Sky_gshwq"]
+sky_material = SubResource("ProceduralSkyMaterial_r2ldl")
+
+[sub_resource type="Environment" id="Environment_ipltg"]
+background_mode = 2
+sky = SubResource("Sky_gshwq")
+tonemap_mode = 2
+glow_enabled = true
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_fw7ol"]
 size = Vector2(20, 20)
 
@@ -28,18 +43,21 @@ shader = ExtResource("13_r2ldl")
 shader_parameter/resolution_x = 320
 shader_parameter/resolution_y = 240
 shader_parameter/color_bit_depth = 4
-shader_parameter/dither_strength = 0.03
+shader_parameter/dither_strength = 0.0
 shader_parameter/jitter_amount = 0.008
-shader_parameter/jitter_speed = 1.2
-shader_parameter/jitter_frequency = 180.0
+shader_parameter/jitter_speed = 0.0
+shader_parameter/jitter_frequency = 1.0
 shader_parameter/chromatic_aberration_strength = 0.0
-shader_parameter/vignette_strength = 0.8
-shader_parameter/vignette_radius = 0.90000004275
+shader_parameter/vignette_strength = 0.0
+shader_parameter/vignette_radius = 0.9
 
 [node name="TestArea" type="Node3D" unique_id=530997429]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=793410509]
-transform = Transform3D(-0.7944146, 0.2547651, -0.55136216, 0, 0.9077775, 0.4194521, 0.60737586, 0.33321887, -0.72115165, 0, 0, 0)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1926169677]
+environment = SubResource("Environment_ipltg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2114964315]
+transform = Transform3D(0.87546456, -0.40485469, 0.26392144, 0, 0.5461019, 0.8377187, -0.48328236, -0.7333931, 0.47809288, 0, 0, 0)
 shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=722481393]
@@ -66,6 +84,7 @@ rotation_edit_mode = 2
 [node name="HUD" parent="." unique_id=1317782817 instance=ExtResource("3_uq18d")]
 
 [node name="PauseMenu" parent="." unique_id=1940577622 instance=ExtResource("4_6as45")]
+z_index = 2
 
 [node name="1" parent="." unique_id=2034752736 instance=ExtResource("5_rjyvi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.896235, 0.021662235, -3.7421863)
@@ -101,6 +120,10 @@ material = SubResource("ShaderMaterial_gshwq")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -550.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(4.2400002, 1.014595)
 mouse_filter = 2
