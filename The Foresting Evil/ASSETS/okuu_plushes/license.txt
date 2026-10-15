@@ -1,0 +1,11 @@
+Model Information:
+* title:	Okuu Plushes
+* source:	https://sketchfab.com/3d-models/okuu-plushes-2d1fe9464a054894ba5288fff7ea7e01
+* author:	solagraphy (https://sketchfab.com/solagraphy)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Okuu Plushes" (https://sketchfab.com/3d-models/okuu-plushes-2d1fe9464a054894ba5288fff7ea7e01) by solagraphy (https://sketchfab.com/solagraphy) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
