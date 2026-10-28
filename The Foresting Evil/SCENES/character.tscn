@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cl3jg7rul0dep"]
 
+[ext_resource type="AudioStream" uid="uid://cmwqgm1438uvd" path="res://ASSETS/Musics/MK2true.mp3" id="1_xiv2o"]
+
 [sub_resource type="GDScript" id="GDScript_vu45j"]
 script/source = "extends CharacterBody3D
 
@@ -29,7 +31,7 @@ var gravity = 9.8
 @onready var cabeça = $\"cabeça\"
 @onready var camera = $\"cabeça/Camera3D\"
 
-@onready var colisao: CollisionObject3D = $CollisionShape3D
+@onready var colisao: CollisionShape3D = $CollisionShape3D
 @onready var teto: RayCast3D = $RayCasteto
 const ALTURA_AGACHADO_MULT = 0.55
 const CROUCH_LERP = 10.0
@@ -131,3 +133,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3588462, -0.07662928)
 
 [node name="RayCasteto" type="RayCast3D" parent="." unique_id=1992826392]
 target_position = Vector3(0, 1, 0)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2076943314]
+stream = ExtResource("1_xiv2o")
+autoplay = true
+parameters/looping = true

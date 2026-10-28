@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dh7o6pn6bnkmj"
-path="res://.godot/imported/Dino Bocchi Plushie.glb-16c8787d7274d02f718f0d3854c0293b.scn"
+path="res://.godot/imported/Dino Bocchi Plushie.glb-3cc46025ed0783fe14de8caace81ff8f.scn"
 
 [deps]
 
-source_file="res://ASSETS/dino-bocchi-plushie-3d-scan/source/Dino Bocchi Plushie.glb"
-dest_files=["res://.godot/imported/Dino Bocchi Plushie.glb-16c8787d7274d02f718f0d3854c0293b.scn"]
+source_file="res://ASSETS/3DMODELS/dino-bocchi-plushie-3d-scan/source/Dino Bocchi Plushie.glb"
+dest_files=["res://.godot/imported/Dino Bocchi Plushie.glb-3cc46025ed0783fe14de8caace81ff8f.scn"]
 
 [params]
 

@@ -6,6 +6,8 @@
 script = ExtResource("1_l7brr")
 
 [node name="stamina" type="ProgressBar" parent="." unique_id=438330311]
+modulate = Color(0.99215686, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
 offset_right = 195.0
 offset_bottom = 32.0
 value = 100.0

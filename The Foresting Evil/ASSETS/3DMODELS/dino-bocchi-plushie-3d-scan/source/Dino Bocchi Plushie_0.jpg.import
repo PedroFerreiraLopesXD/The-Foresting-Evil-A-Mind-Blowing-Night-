@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8e7icykdv01n"
-path.s3tc="res://.godot/imported/Dino Bocchi Plushie_1.jpg-5aa47ebcf8ab70dc6ba253f3ae004f25.s3tc.ctex"
+uid="uid://bh4r663kajgcw"
+path.s3tc="res://.godot/imported/Dino Bocchi Plushie_0.jpg-bf9a357e793d344d90fc9b1323de5825.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "077148d5b67226a793ab794bfbd3abc4"
+"md5": "a2db3f9242904712a01a9179317198de"
 }
 
 [deps]
 
-source_file="res://ASSETS/dino-bocchi-plushie-3d-scan/source/Dino Bocchi Plushie_1.jpg"
-dest_files=["res://.godot/imported/Dino Bocchi Plushie_1.jpg-5aa47ebcf8ab70dc6ba253f3ae004f25.s3tc.ctex"]
+source_file="res://ASSETS/3DMODELS/dino-bocchi-plushie-3d-scan/source/Dino Bocchi Plushie_0.jpg"
+dest_files=["res://.godot/imported/Dino Bocchi Plushie_0.jpg-bf9a357e793d344d90fc9b1323de5825.s3tc.ctex"]
 
 [params]
 
@@ -25,11 +25,11 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=8
+roughness/mode=1
 roughness/src_normal="res://ASSETS/dino-bocchi-plushie-3d-scan/source/Dino Bocchi Plushie_0.jpg"
 process/channel_remap/red=0
 process/channel_remap/green=1

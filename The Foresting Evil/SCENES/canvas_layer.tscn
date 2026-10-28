@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://coqffsy257vh5"]
+
+[ext_resource type="Shader" uid="uid://b3m0un5gsnlj7" path="res://psx_tela.gdshader" id="1_s6wd6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gshwq"]
+shader = ExtResource("1_s6wd6")
+shader_parameter/resolution_x = 300
+shader_parameter/resolution_y = 200
+shader_parameter/color_bit_depth = 4
+shader_parameter/dither_strength = 0.0
+shader_parameter/jitter_amount = 0.008
+shader_parameter/jitter_speed = 0.0
+shader_parameter/jitter_frequency = 1.0
+shader_parameter/chromatic_aberration_strength = 0.0
+shader_parameter/vignette_strength = 0.0
+shader_parameter/vignette_radius = 0.9
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=620072347]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=274284129]
+material = SubResource("ShaderMaterial_gshwq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = 1.9999962
+offset_right = -595.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4.2400002, 1.014595)
+mouse_filter = 2

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6dokeeak4eah"
-path="res://.godot/imported/gltf_embedded_3@channels=G.jpeg-7623b498ab4ed3d0d8880524e5c679e5.ctex"
+uid="uid://c62i4gh8rktde"
+path="res://.godot/imported/gltf_embedded_1@channels=R.jpeg-ccf38f392f3e78bd6287ed911d2f2bae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ASSETS/dino-bocchi-plushie-3d-scan/textures/gltf_embedded_3@channels=G.jpeg"
-dest_files=["res://.godot/imported/gltf_embedded_3@channels=G.jpeg-7623b498ab4ed3d0d8880524e5c679e5.ctex"]
+source_file="res://ASSETS/3DMODELS/dino-bocchi-plushie-3d-scan/textures/gltf_embedded_1@channels=R.jpeg"
+dest_files=["res://.godot/imported/gltf_embedded_1@channels=R.jpeg-ccf38f392f3e78bd6287ed911d2f2bae.ctex"]
 
 [params]
 

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc24w8r6pdrhx"
-path.s3tc="res://.godot/imported/Dino Bocchi Plushie_2.jpg-b2b0f27e870a2977b24621a50852a295.s3tc.ctex"
+uid="uid://35kl7v38egrl"
+path.s3tc="res://.godot/imported/Dino Bocchi Plushie_3.jpg-078b1c2253009779acf87804e93e0e5d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "6d3980f3f31c59c005dc430c64f70d58"
+"md5": "9ba2dc0943a245894aca4c79d3ab7c64"
 }
 
 [deps]
 
-source_file="res://ASSETS/dino-bocchi-plushie-3d-scan/source/Dino Bocchi Plushie_2.jpg"
-dest_files=["res://.godot/imported/Dino Bocchi Plushie_2.jpg-b2b0f27e870a2977b24621a50852a295.s3tc.ctex"]
+source_file="res://ASSETS/3DMODELS/dino-bocchi-plushie-3d-scan/source/Dino Bocchi Plushie_3.jpg"
+dest_files=["res://.godot/imported/Dino Bocchi Plushie_3.jpg-078b1c2253009779acf87804e93e0e5d.s3tc.ctex"]
 
 [params]
 
