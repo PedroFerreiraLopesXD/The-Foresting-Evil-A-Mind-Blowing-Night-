@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dvwlen8purn18"]
+
+[ext_resource type="Texture2D" uid="uid://cswgw3qo721pq" path="res://ASSETS/asaretrogamer.png" id="1_b0dls"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7mcc"]
+albedo_texture = ExtResource("1_b0dls")
+
+[sub_resource type="SphereMesh" id="SphereMesh_53w6q"]
+
+[node name="AsaBall" type="MeshInstance3D" unique_id=317037840]
+material_override = SubResource("StandardMaterial3D_e7mcc")
+mesh = SubResource("SphereMesh_53w6q")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=216008926]
+transform = Transform3D(-0.9203616, 0, -0.39106843, 0, 1, 0, 0.39106843, 0, -0.9203616, 0, 0, 0)
+light_energy = 1.776
+sky_mode = 1

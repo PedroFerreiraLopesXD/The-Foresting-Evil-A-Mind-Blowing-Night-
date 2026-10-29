@@ -13,10 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://cqsr2kxu3q68g" path="res://ASSETS/fumofumo-clownpiece/source/clownpiece.glb" id="11_ipltg"]
 [ext_resource type="PackedScene" uid="uid://cuk7kipx33ry8" path="res://ASSETS/okuu_plushes/okuu_most_smol_file/scene.gltf" id="12_vtmr8"]
 [ext_resource type="PackedScene" uid="uid://coqffsy257vh5" path="res://SCENES/canvas_layer.tscn" id="13_r2ldl"]
+[ext_resource type="PackedScene" uid="uid://dvwlen8purn18" path="res://Coisas Especiais/asa_ball.tscn" id="14_gshwq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r2ldl"]
-sky_top_color = Color(0.70697314, 0.75986606, 0.83071184, 1)
-sky_horizon_color = Color(0.9108719, 0.9090196, 0.9145044, 1)
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
 ground_bottom_color = Color(0.13716576, 0.0768633, 0.02795683, 1)
 ground_horizon_color = Color(0.9108719, 0.9090196, 0.9145044, 1)
 
@@ -24,7 +25,8 @@ ground_horizon_color = Color(0.9108719, 0.9090196, 0.9145044, 1)
 sky_material = SubResource("ProceduralSkyMaterial_r2ldl")
 
 [sub_resource type="Environment" id="Environment_ipltg"]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.60933006, 0.6093301, 0.60933006, 1)
 sky = SubResource("Sky_gshwq")
 tonemap_mode = 2
 glow_enabled = true
@@ -101,3 +103,6 @@ transform = Transform3D(-1.138854, 0, 0.1356544, 0, 0.8631599, 0, -0.14874001, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3373713, 0.21148151, -1.769193)
 
 [node name="CanvasLayer" parent="." unique_id=620072347 instance=ExtResource("13_r2ldl")]
+
+[node name="AsaBall" parent="." unique_id=317037840 instance=ExtResource("14_gshwq")]
+transform = Transform3D(173.65094, -88.42103, 45.02288, -3.255176, 85.6248, 180.71466, -99.170296, -157.63918, 72.90503, 185.70766, 524.52014, 284.326)

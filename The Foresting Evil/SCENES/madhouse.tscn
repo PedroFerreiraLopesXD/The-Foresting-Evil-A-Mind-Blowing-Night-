@@ -16,7 +16,9 @@ ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 sky_material = SubResource("ProceduralSkyMaterial_0h1g7")
 
 [sub_resource type="Environment" id="Environment_bljox"]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.02286219, 1.0904623e-08, 3.008172e-09, 1)
+background_energy_multiplier = 16.0
 sky = SubResource("Sky_rj4ge")
 tonemap_mode = 2
 glow_enabled = true
@@ -42,6 +44,7 @@ mesh = ExtResource("2_rj4ge")
 [node name="StaticBody3D" type="StaticBody3D" parent="Terreno2" unique_id=1456490459]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Terreno2/StaticBody3D" unique_id=1885163806]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.0007003667, 0.0069838166, 0.003939092)
 shape = SubResource("ConcavePolygonShape3D_rj4ge")
 
 [node name="Dino Bocchi Plushie" parent="." unique_id=1557194307 instance=ExtResource("3_bljox")]
