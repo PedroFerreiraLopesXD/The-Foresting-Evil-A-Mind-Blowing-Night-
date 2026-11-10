@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://b3tur0b5opgov"]
+
+[ext_resource type="FontFile" uid="uid://cgahwbb7q2pb8" path="res://ASSETS/Fonts/VCR_OSD_MONO.ttf" id="1_i17ep"]
+[ext_resource type="Script" uid="uid://cd17cdfvi0ti7" path="res://SCRIPTS/menu.gd" id="1_vbyvk"]
+[ext_resource type="Texture2D" uid="uid://cswgw3qo721pq" path="res://ASSETS/asaretrogamer.png" id="2_qnims"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vbyvk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mawtk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5bv5n"]
+
+[node name="Menu" type="Node2D" unique_id=694305093]
+scale = Vector2(1, 1.0045263)
+script = ExtResource("1_vbyvk")
+
+[node name="Titoli" type="Label" parent="." unique_id=425130633]
+offset_left = 341.0
+offset_top = 26.0
+offset_right = 541.0
+offset_bottom = 77.0
+scale = Vector2(2, 2)
+theme_override_fonts/font = ExtResource("1_i17ep")
+text = "The Spark that KEEPS 
+         [me] 
+      A>L>I>V>E	"
+
+[node name="Play" type="Button" parent="." unique_id=304859716]
+offset_left = 492.0
+offset_top = 207.0
+offset_right = 593.0
+offset_bottom = 240.0
+theme_override_fonts/font = ExtResource("1_i17ep")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vbyvk")
+text = "PLAY"
+
+[node name="Settings" type="Button" parent="." unique_id=153136135]
+offset_left = 493.0
+offset_top = 252.0
+offset_right = 594.0
+offset_bottom = 285.0
+theme_override_fonts/font = ExtResource("1_i17ep")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mawtk")
+text = "SETTINGS
+"
+
+[node name="Quit" type="Button" parent="." unique_id=1356346150]
+offset_left = 493.0
+offset_top = 299.0
+offset_right = 594.0
+offset_bottom = 332.0
+theme_override_fonts/font = ExtResource("1_i17ep")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5bv5n")
+text = "QUIT
+"
+
+[node name="XD" type="Sprite2D" parent="." unique_id=1210566543]
+z_index = -1
+position = Vector2(577.5, 279.73386)
+scale = Vector2(2.302, 1.2833896)
+texture = ExtResource("2_qnims")
+flip_h = true
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]

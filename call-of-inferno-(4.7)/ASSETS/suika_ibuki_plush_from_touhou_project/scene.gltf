@@ -1,0 +1,270 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 15602,
+      "max": [
+        0.11491470783948898,
+        0.2392347902059555,
+        0.09523198753595352
+      ],
+      "min": [
+        -0.11857758462429047,
+        -8.950402197172025e-09,
+        -0.09505227953195572
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 187224,
+      "componentType": 5126,
+      "count": 15602,
+      "max": [
+        0.9999421238899231,
+        0.9998565912246704,
+        0.9999931454658508
+      ],
+      "min": [
+        -0.9994141459465027,
+        -0.9996507167816162,
+        -0.9995036721229553
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 15602,
+      "max": [
+        0.9998796582221985,
+        0.9999895691871643,
+        0.9998473525047302,
+        1.0
+      ],
+      "min": [
+        -0.9999457001686096,
+        -0.9999949932098389,
+        -0.9999857544898987,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 15602,
+      "max": [
+        0.9999220371246338,
+        0.9984140396118164
+      ],
+      "min": [
+        1.136904415943718e-06,
+        7.611513137817383e-05
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 75000,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "mannymanny (https://sketchfab.com/mannymanny)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/suika-ibuki-plush-from-touhou-project-d4be4ec0e9d94bbea29d7b5dd5dd9436",
+      "title": "Suika Ibuki Plush from Touhou Project"
+    },
+    "generator": "Sketchfab-15.61.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 300000,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 124816,
+      "byteOffset": 300000,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 374448,
+      "byteOffset": 424816,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 249632,
+      "byteOffset": 799264,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 1048896,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/Texture_baseColor.png"
+    },
+    {
+      "uri": "textures/Texture_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/Texture_normal.png"
+    }
+  ],
+  "materials": [
+    {
+      "name": "Texture",
+      "normalTexture": {
+        "index": 2
+      },
+      "occlusionTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "metallicRoughnessTexture": {
+          "index": 1
+        },
+        "roughnessFactor": 0.9
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Mesh",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "USDRoot"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "ObjectCapture"
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "Geometry"
+    },
+    {
+      "mesh": 0,
+      "name": "Mesh"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ]
+}

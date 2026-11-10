@@ -8,7 +8,6 @@
 [ext_resource type="ArrayMesh" uid="uid://cirxcf2ctnoqb" path="res://ASSETS/Arvores/arvoreengracada1.obj" id="3_kimso"]
 [ext_resource type="PackedScene" uid="uid://bgvxtbjek4h65" path="res://SCENES/hud.tscn" id="4_ksao8"]
 [ext_resource type="PackedScene" uid="uid://coqffsy257vh5" path="res://SCENES/canvas_layer.tscn" id="5_11v3b"]
-[ext_resource type="PackedScene" uid="uid://dk4fpd63a43bf" path="res://ASSETS/slender-fortress-ben-drowned/slender_fortress_-_ben_drowned.glb" id="7_h8n4k"]
 [ext_resource type="ArrayMesh" uid="uid://b0lxfm4v13s1l" path="res://ASSETS/Arvores/arvoreengracada2.obj" id="9_1fe1v"]
 [ext_resource type="ArrayMesh" uid="uid://dblry1qymcncj" path="res://ASSETS/Arvores/arvore4.obj" id="10_cp7ig"]
 [ext_resource type="ArrayMesh" uid="uid://cg1yu2y7k7j12" path="res://ASSETS/Arvores/arvoreengracada3.obj" id="11_8xnqn"]
@@ -39,6 +38,23 @@ fog_density = 1.0
 fog_height_density = 1.0
 volumetric_fog_density = 0.1
 volumetric_fog_albedo = Color(0, 0, 0, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6nhdj"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, -5.5, 0)
+radial_accel_min = -4.0000024
+radial_accel_max = 3.9999976
+tangential_accel_min = -8.000002
+tangential_accel_max = 7.9999976
+damping_max = 4.0
+scale_min = 0.049999997
+scale_max = 0.19999999
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 1.987
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w42ul"]
 albedo_color = Color(0.17641911, 0.17641908, 0.17641908, 1)
@@ -84,7 +100,14 @@ environment = SubResource("Environment_bljox")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6059668, 0)
 
 [node name="Snow" parent="CharacterBody3D" unique_id=691184092 instance=ExtResource("2_sirdb")]
-transform = Transform3D(0.8879893, 0.19473349, 8.512073e-09, 0, -3.9737625e-08, 0.9090909, 0.19473349, -0.8879893, -3.881525e-08, 0, 1.6059668, 0)
+transform = Transform3D(19.99172, -0.32324332, -0.47602698, 0.42342916, 19.467861, 4.563232, 0.38960963, -4.5714216, 19.466646, 0, 1.6059668, 0)
+transparency = 0.03
+amount = 2000
+lifetime = 3.86
+randomness = 0.2
+fixed_fps = 24
+trail_lifetime = 0.01
+process_material = SubResource("ParticleProcessMaterial_6nhdj")
 
 [node name="Terreno2" type="MeshInstance3D" parent="." unique_id=407938238]
 transform = Transform3D(39.999992, -0.001486728, -0.020210799, 0.0035164433, 16.999992, 0.0357186, 0.020207629, -0.015181168, 39.999977, -0.8027699, -10.934992, 0.7641134)
@@ -120,9 +143,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.95764, -0.966115, 1.5794
 [node name="HUD" parent="." unique_id=1317782817 instance=ExtResource("4_ksao8")]
 
 [node name="CanvasLayer" parent="." unique_id=620072347 instance=ExtResource("5_11v3b")]
-
-[node name="Sketchfab_Scene" parent="." unique_id=979634264 instance=ExtResource("7_h8n4k")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -4.271216, -2.7713299, -3.5974345)
 
 [node name="Arvores" type="Node3D" parent="." unique_id=813472676]
 
