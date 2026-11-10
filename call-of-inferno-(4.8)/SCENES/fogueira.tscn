@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://buax0wm6yaf3n"]
+
+[ext_resource type="ArrayMesh" uid="uid://c48ysaqm3pmv7" path="res://ASSETS/3DMODELS/fogueira.obj" id="1_gtjax"]
+[ext_resource type="Gradient" path="res://ASSETS/Fire.tres" id="2_mt2cm"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eca5k"]
+gradient = ExtResource("2_mt2cm")
+
+[sub_resource type="Curve" id="Curve_rpsk5"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.14893618, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_f21tm"]
+curve = SubResource("Curve_rpsk5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3b1ix"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 5.0
+angular_velocity_min = 39.999985
+angular_velocity_max = 39.999985
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 0.99999774
+linear_accel_max = 3.9999976
+scale_min = 0.19999999
+scale_curve = SubResource("CurveTexture_f21tm")
+color_ramp = SubResource("GradientTexture1D_eca5k")
+anim_speed_max = 1.0
+anim_offset_min = 1.0
+anim_offset_max = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r0uky"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+billboard_mode = 3
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_c8w0x"]
+material = SubResource("StandardMaterial3D_r0uky")
+
+[node name="Fogueira" type="MeshInstance3D" unique_id=1279246558]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3108759, 0, 0)
+mesh = ExtResource("1_gtjax")
+
+[node name="Fogo" type="GPUParticles3D" parent="." unique_id=1921696144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3106818, 0, 0)
+amount = 200
+lifetime = 0.5
+randomness = 1.0
+local_coords = true
+draw_order = 3
+process_material = SubResource("ParticleProcessMaterial_3b1ix")
+draw_pass_1 = SubResource("QuadMesh_c8w0x")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Fogo" unique_id=882520012]
+omni_range = 16.724
+omni_attenuation = 0.885

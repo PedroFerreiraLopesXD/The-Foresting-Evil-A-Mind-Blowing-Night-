@@ -1,0 +1,172 @@
+[gd_scene format=3 uid="uid://cl3jg7rul0dep"]
+
+[ext_resource type="AudioStream" uid="uid://bnu538k1qijm" path="res://ASSETS/Musics/ambient loop.mp3" id="1_eqpq4"]
+[ext_resource type="AudioStream" uid="uid://mdomj4es4lus" path="res://ASSETS/Musics/wind.mp3" id="2_eqpq4"]
+
+[sub_resource type="GDScript" id="GDScript_vu45j"]
+script/source = "extends CharacterBody3D
+
+var speed: float = WALK_SPEED
+const WALK_SPEED = 1.6
+const SPRINT_SPEED = 4.5
+const CROUCH_SPEED = 1
+const SENSITIVITY = 0.003
+
+@export var max_stamina := 150.0
+@export var stamina := 150.0
+@export var stamina_regen_delay := 1.5
+var regen_timer := 0.0
+@export var stamina_drain := 20.0
+@export var stamina_regen := 15.0
+@onready var stamina_bar: ProgressBar = $\"../stamina\"
+
+var is_running := false
+
+const BOB_FREQ = 5.0
+const BOB_AMP = 0.1
+var t_bob = 0.0
+var camera_base_pos: Vector3
+
+var gravity = 9.8
+
+@onready var cabeça = $\"cabeça\"
+@onready var camera = $\"cabeça/Camera3D\"
+
+@onready var colisao: CollisionShape3D = $CollisionShape3D
+@onready var teto: RayCast3D = $RayCasteto
+const ALTURA_AGACHADO_MULT = 0.55
+const CROUCH_LERP = 10.0
+var agachado := false
+var altura_normal: float
+var altura_agachado: float
+var colisao_y_normal: float
+var cabeca_y_normal: float
+
+
+func _input(event):
+	if event.is_action_pressed(\"ui_cancel\"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	elif event.is_action_pressed(\"backmouse\"):
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
+
+func _ready():
+	camera_base_pos = camera.position
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	var capsula := colisao.shape as CapsuleShape3D
+	altura_normal = capsula.height
+	altura_agachado = altura_normal * ALTURA_AGACHADO_MULT
+	colisao_y_normal = colisao.position.y
+	cabeca_y_normal = cabeça.position.y
+
+func _unhandled_input(event):
+	if event is InputEventMouseMotion:
+		cabeça.rotate_y(-event.relative.x * SENSITIVITY)
+		camera.rotate_x(-event.relative.y * SENSITIVITY)
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	
+	if Input.is_action_just_pressed(\"agachar\"):
+		agachado = true
+	elif agachado and not teto.is_colliding():
+		agachado = false
+	
+	
+	if is_running:
+		stamina -= stamina_drain * delta
+		regen_timer = stamina_regen_delay
+	else:
+		if regen_timer > 0:
+			regen_timer -= delta
+		else:
+			stamina += stamina_regen * delta
+	stamina = clamp(stamina, 0.0, max_stamina)
+	
+	if Input.is_action_pressed(\"corra\") and stamina > 0:
+		speed = SPRINT_SPEED
+		is_running = true
+	else:
+		speed = WALK_SPEED
+		is_running = false
+
+	var input_dir := Input.get_vector(\"esquerda\", \"direita\", \"frente\", \"tras\")
+	var direction: Vector3 = (cabeça.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if is_on_floor():
+		if direction:
+			velocity.x = direction.x * speed
+			velocity.z = direction.z * speed
+		else:
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
+	else:
+		velocity.x = lerp(velocity.x, direction.x * speed, delta * 2.0)
+		velocity.z = lerp(velocity.z, direction.z * speed, delta * 2.0)
+	
+	t_bob += delta * velocity.length() * float(is_on_floor())
+	camera.position = camera_base_pos + _headbob(t_bob)
+	
+	move_and_slide()
+
+func _headbob(time) -> Vector3:
+	var pos = Vector3.ZERO
+	pos.y = sin(time * BOB_FREQ) * BOB_AMP
+	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
+	return pos 
+"
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_glpr6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pjt0s"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1164453538]
+script = SubResource("GDScript_vu45j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=769561240]
+visible = false
+layers = 2
+mesh = SubResource("CapsuleMesh_glpr6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=706031554]
+shape = SubResource("CapsuleShape3D_pjt0s")
+
+[node name="cabeça" type="Node3D" parent="." unique_id=1426175020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0879202, -0.09869194)
+
+[node name="Camera3D" type="Camera3D" parent="cabeça" unique_id=1033830822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3588462, -0.07662928)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="cabeça/Camera3D" unique_id=1013232589]
+transform = Transform3D(1, 0, 0, 0, 0.99993104, 0.011745796, 0, -0.011745796, 0.99993104, 0, -0.3588462, 0.07662928)
+light_energy = 5.0
+light_size = 2.0
+shadow_enabled = true
+spot_range = 10.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="cabeça/Camera3D" unique_id=1195282820]
+transform = Transform3D(1, 0, 0, 0, 0.99993104, 0.011745796, 0, -0.011745796, 0.99993104, 0, -0.3588462, 0.07662928)
+light_energy = 5.0
+light_size = 2.0
+shadow_enabled = true
+spot_range = 10.0
+spot_angle = 40.0
+
+[node name="RayCasteto" type="RayCast3D" parent="." unique_id=1992826392]
+target_position = Vector3(0, 1, 0)
+
+[node name="ambient" type="AudioStreamPlayer2D" parent="." unique_id=2076943314]
+stream = ExtResource("1_eqpq4")
+volume_db = 10.0
+pitch_scale = 0.9
+autoplay = true
+parameters/looping = true
+
+[node name="wind" type="AudioStreamPlayer2D" parent="." unique_id=699959550]
+stream = ExtResource("2_eqpq4")
+volume_db = 10.0
+autoplay = true
+parameters/looping = true

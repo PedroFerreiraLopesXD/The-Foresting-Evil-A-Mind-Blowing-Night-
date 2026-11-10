@@ -4,7 +4,6 @@
 [ext_resource type="ArrayMesh" uid="uid://bpgej1hi0fvjd" path="res://ASSETS/terreno.obj" id="2_rj4ge"]
 [ext_resource type="PackedScene" uid="uid://0nmukcnokfhp" path="res://snow.tscn" id="2_sirdb"]
 [ext_resource type="ArrayMesh" uid="uid://vb650081w1jv" path="res://ASSETS/Arvores/arvoregrandona1.obj" id="3_8xnqn"]
-[ext_resource type="PackedScene" uid="uid://dh7o6pn6bnkmj" path="res://ASSETS/3DMODELS/dino-bocchi-plushie-3d-scan/source/Dino Bocchi Plushie.glb" id="3_bljox"]
 [ext_resource type="ArrayMesh" uid="uid://cirxcf2ctnoqb" path="res://ASSETS/Arvores/arvoreengracada1.obj" id="3_kimso"]
 [ext_resource type="PackedScene" uid="uid://bgvxtbjek4h65" path="res://SCENES/hud.tscn" id="4_ksao8"]
 [ext_resource type="PackedScene" uid="uid://coqffsy257vh5" path="res://SCENES/canvas_layer.tscn" id="5_11v3b"]
@@ -43,15 +42,15 @@ volumetric_fog_albedo = Color(0, 0, 0, 1)
 emission_shape = 1
 emission_sphere_radius = 1.0
 direction = Vector3(0, -1, 0)
-initial_velocity_min = 3.0
-initial_velocity_max = 6.0
-gravity = Vector3(0, -5.5, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(1, -5.5, 0)
 radial_accel_min = -4.0000024
 radial_accel_max = 3.9999976
 tangential_accel_min = -8.000002
 tangential_accel_max = 7.9999976
 damping_max = 4.0
-scale_min = 0.049999997
+scale_min = 0.099999994
 scale_max = 0.19999999
 turbulence_noise_strength = 20.0
 turbulence_noise_scale = 1.987
@@ -100,11 +99,11 @@ environment = SubResource("Environment_bljox")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6059668, 0)
 
 [node name="Snow" parent="CharacterBody3D" unique_id=691184092 instance=ExtResource("2_sirdb")]
-transform = Transform3D(19.99172, -0.32324332, -0.47602698, 0.42342916, 19.467861, 4.563232, 0.38960963, -4.5714216, 19.466646, 0, 1.6059668, 0)
+transform = Transform3D(9.811201, 11.916896, -12.717238, -3.427217, 15.628185, 12.00059, 17.08785, -3.7077723, 9.708651, 0, 1.6059668, -1.1124755)
 transparency = 0.03
-amount = 2000
+cast_shadow = 0
+amount = 4000
 lifetime = 3.86
-randomness = 0.2
 fixed_fps = 24
 trail_lifetime = 0.01
 process_material = SubResource("ParticleProcessMaterial_6nhdj")
@@ -136,9 +135,6 @@ shape = SubResource("ConcavePolygonShape3D_sirdb")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Terreno2/StaticBody3D" unique_id=1659413886]
 transform = Transform3D(0.024999982, -3.3129055e-13, -1.8189894e-12, -1.3127277e-12, 0.05882348, -3.637979e-12, 6.366463e-12, 0, 0.024999984, 1.5305022, 0.58444124, 1.7092133)
 shape = SubResource("ConcavePolygonShape3D_iusyo")
-
-[node name="Dino Bocchi Plushie" parent="." unique_id=1557194307 instance=ExtResource("3_bljox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.95764, -0.966115, 1.5794449)
 
 [node name="HUD" parent="." unique_id=1317782817 instance=ExtResource("4_ksao8")]
 
@@ -587,9 +583,6 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/SuperArvore3/StaticBody3D" unique_id=1025083014]
 shape = SubResource("ConcavePolygonShape3D_cp7ig")
-
-[node name="Dino Bocchi Plushie2" parent="." unique_id=488090517 instance=ExtResource("3_bljox")]
-transform = Transform3D(-0.21270631, 0, 0.97711617, 0, 1, 0, -0.97711617, 0, -0.21270631, -18.603802, 0.25080976, 37.20102)
 
 [node name="FadeIn" type="CanvasLayer" parent="." unique_id=1296063287]
 
