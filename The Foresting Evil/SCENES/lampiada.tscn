@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bxo21pth61vex"]
+
+[ext_resource type="ArrayMesh" uid="uid://dp5vp3qvidklg" path="res://ASSETS/3DMODELS/LAMPIAO.obj" id="1_8n4i7"]
+[ext_resource type="Script" uid="uid://c5p5awpvajdbi" path="res://SCENES/lampiada.gd" id="1_oa2o0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8n4i7"]
+radius = 1.4735473
+
+[node name="lampiada" type="Node3D" unique_id=1312728241]
+script = ExtResource("1_oa2o0")
+
+[node name="Lampiao" type="MeshInstance3D" parent="." unique_id=1992480768]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = ExtResource("1_8n4i7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lampiao" unique_id=1771037950]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 6.4607716, 0)
+visible = false
+light_color = Color(1, 0.78431374, 0, 1)
+light_energy = 3.0
+omni_range = 10.0
+
+[node name="Area3D" type="Area3D" parent="." unique_id=699679719]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1646747668]
+shape = SubResource("SphereShape3D_8n4i7")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

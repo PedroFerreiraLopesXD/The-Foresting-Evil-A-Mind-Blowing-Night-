@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://cl3jg7rul0dep"]
 
 [ext_resource type="AudioStream" uid="uid://bnu538k1qijm" path="res://ASSETS/Musics/ambient loop.mp3" id="1_eqpq4"]
+[ext_resource type="PackedScene" uid="uid://bxo21pth61vex" path="res://SCENES/lampiada.tscn" id="1_lecx6"]
 [ext_resource type="AudioStream" uid="uid://mdomj4es4lus" path="res://ASSETS/Musics/wind.mp3" id="2_eqpq4"]
+[ext_resource type="FontFile" uid="uid://cgahwbb7q2pb8" path="res://ASSETS/Fonts/VCR_OSD_MONO.ttf" id="2_jqij5"]
 
 [sub_resource type="GDScript" id="GDScript_vu45j"]
 script/source = "extends CharacterBody3D
@@ -18,7 +20,7 @@ const SENSITIVITY = 0.003
 var regen_timer := 0.0
 @export var stamina_drain := 20.0
 @export var stamina_regen := 15.0
-@onready var stamina_bar: ProgressBar = $\"../stamina\"
+#@onready var stamina_bar: ProgressBar = $\"../stamina\"
 
 var is_running := false
 
@@ -87,6 +89,7 @@ func _physics_process(delta: float) -> void:
 			stamina += stamina_regen * delta
 	stamina = clamp(stamina, 0.0, max_stamina)
 	
+
 	if Input.is_action_pressed(\"corra\") and stamina > 0:
 		speed = SPRINT_SPEED
 		is_running = true
@@ -123,7 +126,7 @@ func _headbob(time) -> Vector3:
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pjt0s"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1164453538]
+[node name="character" type="CharacterBody3D" unique_id=1164453538 groups=["player"]]
 script = SubResource("GDScript_vu45j")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=769561240]
@@ -140,20 +143,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0879202, -0.09869194)
 [node name="Camera3D" type="Camera3D" parent="cabeça" unique_id=1033830822]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3588462, -0.07662928)
 
+[node name="lampiada" parent="cabeça/Camera3D" unique_id=1312728241 instance=ExtResource("1_lecx6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4616168, -0.56167793, -0.6859971)
+visible = false
+
 [node name="SpotLight3D" type="SpotLight3D" parent="cabeça/Camera3D" unique_id=1013232589]
 transform = Transform3D(1, 0, 0, 0, 0.99993104, 0.011745796, 0, -0.011745796, 0.99993104, 0, -0.3588462, 0.07662928)
-light_energy = 5.0
+light_energy = 2.0
 light_size = 2.0
 shadow_enabled = true
 spot_range = 10.0
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="cabeça/Camera3D" unique_id=1195282820]
 transform = Transform3D(1, 0, 0, 0, 0.99993104, 0.011745796, 0, -0.011745796, 0.99993104, 0, -0.3588462, 0.07662928)
-light_energy = 5.0
+light_energy = 2.0
 light_size = 2.0
 shadow_enabled = true
 spot_range = 10.0
 spot_angle = 40.0
+
+[node name="Label3D" type="Label3D" parent="cabeça/Camera3D" unique_id=207887934]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.33617544, -1.0896758)
+text = "aperte \"E\" para pegar"
+font = ExtResource("2_jqij5")
 
 [node name="RayCasteto" type="RayCast3D" parent="." unique_id=1992826392]
 target_position = Vector3(0, 1, 0)

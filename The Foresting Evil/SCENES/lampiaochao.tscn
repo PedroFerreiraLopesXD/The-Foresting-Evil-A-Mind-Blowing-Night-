@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dngfrv51yenhr"]
+
+[ext_resource type="Script" uid="uid://dvnc4h55wy7kw" path="res://SCRIPTS/lampiaochao.gd" id="1_j1roo"]
+[ext_resource type="ArrayMesh" uid="uid://dp5vp3qvidklg" path="res://ASSETS/3DMODELS/LAMPIAO.obj" id="1_lv3st"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_j1roo"]
+radius = 2.0141225
+
+[node name="lampiaochao" type="Node3D" unique_id=340058318]
+script = ExtResource("1_j1roo")
+
+[node name="Lampiao" type="MeshInstance3D" parent="." unique_id=1599762833]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = ExtResource("1_lv3st")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lampiao" unique_id=894229841]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 6.4607716, 0)
+visible = false
+light_color = Color(1, 0.78431374, 0, 1)
+omni_range = 10.0
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1362518243]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=464798058]
+shape = SubResource("SphereShape3D_j1roo")
