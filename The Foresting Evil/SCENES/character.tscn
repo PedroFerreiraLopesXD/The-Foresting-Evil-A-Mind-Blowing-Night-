@@ -14,12 +14,12 @@ const SPRINT_SPEED = 4.5
 const CROUCH_SPEED = 1
 const SENSITIVITY = 0.003
 
-@export var max_stamina := 150.0
-@export var stamina := 150.0
+@export var max_stamina := 100.0
+@export var stamina := 100.0
 @export var stamina_regen_delay := 1.5
 var regen_timer := 0.0
-@export var stamina_drain := 20.0
-@export var stamina_regen := 15.0
+@export var stamina_drain := 10.0
+@export var stamina_regen := 8.0
 #@onready var stamina_bar: ProgressBar = $\"../stamina\"
 
 var is_running := false
@@ -143,6 +143,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0879202, -0.09869194)
 [node name="Camera3D" type="Camera3D" parent="cabeça" unique_id=1033830822]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3588462, -0.07662928)
 
+[node name="Label3D" type="Label3D" parent="cabeça/Camera3D" unique_id=207887934]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.33617544, -1.0896758)
+text = "aperte \"E\" para pegar"
+font = ExtResource("2_jqij5")
+
 [node name="lampiada" parent="cabeça/Camera3D" unique_id=1312728241 instance=ExtResource("1_lecx6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4616168, -0.56167793, -0.6859971)
 visible = false
@@ -161,11 +166,6 @@ light_size = 2.0
 shadow_enabled = true
 spot_range = 10.0
 spot_angle = 40.0
-
-[node name="Label3D" type="Label3D" parent="cabeça/Camera3D" unique_id=207887934]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.33617544, -1.0896758)
-text = "aperte \"E\" para pegar"
-font = ExtResource("2_jqij5")
 
 [node name="RayCasteto" type="RayCast3D" parent="." unique_id=1992826392]
 target_position = Vector3(0, 1, 0)
