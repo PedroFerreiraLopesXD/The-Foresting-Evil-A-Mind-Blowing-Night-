@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dvemqxq4cgavw"]
+
+[ext_resource type="ArrayMesh" uid="uid://do6ps624m565x" path="res://ASSETS/3DMODELS/VELA.obj" id="1_joqew"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2w74y"]
+radius = 1.2379948
+
+[node name="Itenspegar" type="Area3D" unique_id=1626472242]
+
+[node name="Vela" type="MeshInstance3D" parent="." unique_id=1173110842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.914902, -0.1615259, 26.242958)
+mesh = ExtResource("1_joqew")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=311465961]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.9191394, 1.1168346, 26.125763)
+shape = SubResource("SphereShape3D_2w74y")

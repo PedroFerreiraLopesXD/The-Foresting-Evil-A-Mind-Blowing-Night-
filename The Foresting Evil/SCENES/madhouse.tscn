@@ -15,10 +15,11 @@
 [ext_resource type="ArrayMesh" uid="uid://ku21p2kiih2q" path="res://ASSETS/Cabanarocheda2.obj" id="14_sirdb"]
 [ext_resource type="Shader" uid="uid://dcnj45u6mfae2" path="res://SHADERS/psx_objeto.gdshader" id="14_u11vg"]
 [ext_resource type="PackedScene" uid="uid://buax0wm6yaf3n" path="res://SCENES/fogueira.tscn" id="16_2w74y"]
-[ext_resource type="ArrayMesh" uid="uid://cj2t076bbgs1b" path="res://ASSETS/3DMODELS/montanhas.obj" id="17_2w74y"]
 [ext_resource type="ArrayMesh" uid="uid://dp5vp3qvidklg" path="res://ASSETS/3DMODELS/LAMPIAO.obj" id="17_mgr0g"]
 [ext_resource type="PackedScene" uid="uid://bxo21pth61vex" path="res://SCENES/lampiada.tscn" id="18_mgr0g"]
 [ext_resource type="PackedScene" uid="uid://wbwtqr3v7o6f" path="res://SCENES/monstroassustador.tscn" id="19_1obli"]
+[ext_resource type="PackedScene" uid="uid://dvemqxq4cgavw" path="res://SCENES/itenspegar.tscn" id="19_ck6ot"]
+[ext_resource type="ArrayMesh" uid="uid://jwiqqv8e7qfh" path="res://ASSETS/3DMODELS/bike do jaiden.obj" id="20_ck6ot"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g644h"]
 sky_top_color = Color(1, 0, 0, 1)
@@ -120,6 +121,12 @@ visible = false
 [node name="SpotLight3D2" parent="CharacterBody3D/cabeça/Camera3D" parent_id_path=PackedInt32Array(1720337367, 1033830822) index="3" unique_id=1195282820]
 visible = false
 
+[node name="ContadorVelas" type="Label" parent="CharacterBody3D/cabeça/Camera3D" parent_id_path=PackedInt32Array(1720337367, 1033830822) index="4" unique_id=488464571]
+offset_left = 46.0
+offset_top = 575.0
+offset_right = 222.0
+offset_bottom = 637.0
+
 [node name="Snow" parent="CharacterBody3D" unique_id=691184092 instance=ExtResource("2_sirdb")]
 transform = Transform3D(9.811201, 11.916896, -12.717238, -3.427217, 15.628185, 12.00059, 17.08785, -3.7077723, 9.708651, 0, 1.6059668, -1.1124755)
 transparency = 0.03
@@ -154,9 +161,28 @@ mesh = ExtResource("3_8xnqn")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Terreno2/StaticBody3D/Arvoregrandona2/StaticBody3D" unique_id=78671004]
 shape = SubResource("ConcavePolygonShape3D_sirdb")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Terreno2/StaticBody3D/Arvoregrandona2/StaticBody3D" unique_id=739080206]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terreno2/StaticBody3D/Arvoregrandona2/StaticBody3D/StaticBody3D" unique_id=574933778]
+shape = SubResource("ConcavePolygonShape3D_sirdb")
+
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Terreno2/StaticBody3D" unique_id=1659413886]
 transform = Transform3D(0.024999982, -3.3129055e-13, -1.8189894e-12, -1.3127277e-12, 0.05882348, -3.637979e-12, 6.366463e-12, 0, 0.024999984, 1.5305022, 0.58444124, 1.7092133)
 shape = SubResource("ConcavePolygonShape3D_iusyo")
+
+[node name="Arvoregrandona2" type="MeshInstance3D" parent="Terreno2" unique_id=1835448340]
+transform = Transform3D(-0.023293069, 6.8389476e-05, -0.009079139, -9.086827e-06, 0.05882291, 0.000103345796, 0.009079177, 0.00023432888, -0.02329286, 0.14198403, 0.34866834, -1.57809)
+mesh = ExtResource("3_8xnqn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Terreno2/Arvoregrandona2" unique_id=377539728]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terreno2/Arvoregrandona2/StaticBody3D" unique_id=244521221]
+shape = SubResource("ConcavePolygonShape3D_sirdb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Terreno2/Arvoregrandona2/StaticBody3D" unique_id=1976261650]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terreno2/Arvoregrandona2/StaticBody3D/StaticBody3D" unique_id=2004205888]
+shape = SubResource("ConcavePolygonShape3D_sirdb")
 
 [node name="HUD" parent="." unique_id=1317782817 instance=ExtResource("4_ksao8")]
 
@@ -184,6 +210,36 @@ skeleton = NodePath("../../Terreno2/StaticBody3D")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/ArvoreColossal8/StaticBody3D" unique_id=2138337877]
 shape = SubResource("ConcavePolygonShape3D_w42ul")
 
+[node name="ArvoreColossal8" type="MeshInstance3D" parent="Arvores/ArvoreColossal8" unique_id=1052052399]
+transform = Transform3D(1.332013, 0, 0.8864212, 0, 1.6000016, 0, -0.8864212, 0, 1.332013, 27.146935, -16.335545, -61.623466)
+mesh = ExtResource("11_8xnqn")
+skeleton = NodePath("../../Terreno2/StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arvores/ArvoreColossal8/ArvoreColossal8" unique_id=884963983]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/ArvoreColossal8/ArvoreColossal8/StaticBody3D" unique_id=1412669672]
+shape = SubResource("ConcavePolygonShape3D_w42ul")
+
+[node name="ArvoreColossal9" type="MeshInstance3D" parent="Arvores/ArvoreColossal8" unique_id=398791345]
+transform = Transform3D(1.1117748, 0, -1.1506333, 0, 1.6, 0, 1.1506333, 0, 1.1117748, -22.97346, -4.44489, 93.798744)
+mesh = ExtResource("11_8xnqn")
+skeleton = NodePath("../../Terreno2/StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arvores/ArvoreColossal8/ArvoreColossal9" unique_id=1383390960]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/ArvoreColossal8/ArvoreColossal9/StaticBody3D" unique_id=718076157]
+shape = SubResource("ConcavePolygonShape3D_w42ul")
+
+[node name="ArvoreColossal8" type="MeshInstance3D" parent="Arvores/ArvoreColossal8/ArvoreColossal9" unique_id=1641327412]
+transform = Transform3D(1.332013, 0, 0.8864212, 0, 1.6000016, 0, -0.8864212, 0, 1.332013, 27.146935, -16.335545, -61.623466)
+mesh = ExtResource("11_8xnqn")
+skeleton = NodePath("../../Terreno2/StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arvores/ArvoreColossal8/ArvoreColossal9/ArvoreColossal8" unique_id=2083859756]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/ArvoreColossal8/ArvoreColossal9/ArvoreColossal8/StaticBody3D" unique_id=177544417]
+shape = SubResource("ConcavePolygonShape3D_w42ul")
+
 [node name="ArvoreColossal14" type="MeshInstance3D" parent="Arvores" unique_id=1628489693]
 transform = Transform3D(1.6969281, 0, 0.10215359, 0, 1.7, 0, -0.10215359, 0, 1.6969281, -34.87703, -0.35929728, 45.342026)
 mesh = ExtResource("11_8xnqn")
@@ -194,6 +250,16 @@ skeleton = NodePath("../../Terreno2/StaticBody3D")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/ArvoreColossal14/StaticBody3D" unique_id=555240067]
 shape = SubResource("ConcavePolygonShape3D_w42ul")
 
+[node name="ArvoreColossal14" type="MeshInstance3D" parent="Arvores/ArvoreColossal14" unique_id=251997080]
+transform = Transform3D(1.6969283, 0, 0.102153614, 0, 1.6999998, 0, -0.102153614, 0, 1.6969283, -51.835747, -4.695998, 46.596203)
+mesh = ExtResource("11_8xnqn")
+skeleton = NodePath("../../Terreno2/StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arvores/ArvoreColossal14/ArvoreColossal14" unique_id=486632921]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/ArvoreColossal14/ArvoreColossal14/StaticBody3D" unique_id=2014224066]
+shape = SubResource("ConcavePolygonShape3D_w42ul")
+
 [node name="ArvoreColossal5" type="MeshInstance3D" parent="Arvores" unique_id=620731489]
 transform = Transform3D(1.1117748, 0, -1.1506333, 0, 1.6, 0, 1.1506333, 0, 1.1117748, -22.97346, -0.19321918, 47.28263)
 mesh = ExtResource("11_8xnqn")
@@ -202,6 +268,16 @@ skeleton = NodePath("../../Terreno2/StaticBody3D")
 [node name="StaticBody3D" type="StaticBody3D" parent="Arvores/ArvoreColossal5" unique_id=1515331585]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/ArvoreColossal5/StaticBody3D" unique_id=1064148341]
+shape = SubResource("ConcavePolygonShape3D_w42ul")
+
+[node name="ArvoreColossal5" type="MeshInstance3D" parent="Arvores/ArvoreColossal5" unique_id=676208487]
+transform = Transform3D(1.1117748, 0, -1.1506335, 0, 1.6000003, 0, 1.1506335, 0, 1.1117748, 89.89818, -0.1932192, -69.53406)
+mesh = ExtResource("11_8xnqn")
+skeleton = NodePath("../../Terreno2/StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arvores/ArvoreColossal5/ArvoreColossal5" unique_id=1111558175]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/ArvoreColossal5/ArvoreColossal5/StaticBody3D" unique_id=575740224]
 shape = SubResource("ConcavePolygonShape3D_w42ul")
 
 [node name="ArvoreColossal13" type="MeshInstance3D" parent="Arvores" unique_id=1709004060]
@@ -215,7 +291,7 @@ skeleton = NodePath("../../Terreno2/StaticBody3D")
 shape = SubResource("ConcavePolygonShape3D_w42ul")
 
 [node name="ArvoreColossal4" type="MeshInstance3D" parent="Arvores" unique_id=805756258]
-transform = Transform3D(-1.1092705, 0, -1.0097123, 0, 1.5, 0, 1.0097123, 0, -1.1092705, 16.94857, -4.44489, 36.69365)
+transform = Transform3D(-1.1092705, 0, -1.0097123, 0, 1.5, 0, 1.0097123, 0, -1.1092705, 16.946692, -4.44489, 36.67174)
 mesh = ExtResource("11_8xnqn")
 skeleton = NodePath("../../Terreno2/StaticBody3D")
 
@@ -262,6 +338,16 @@ skeleton = NodePath("../../Terreno2/StaticBody3D")
 [node name="StaticBody3D" type="StaticBody3D" parent="Arvores/ArvoreColossal6" unique_id=407999572]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/ArvoreColossal6/StaticBody3D" unique_id=1734285511]
+shape = SubResource("ConcavePolygonShape3D_w42ul")
+
+[node name="ArvoreColossal6" type="MeshInstance3D" parent="Arvores/ArvoreColossal6" unique_id=1405527028]
+transform = Transform3D(0.31666994, 0, -1.5683494, 0, 1.5999998, 0, 1.5683494, 0, 0.31666994, -109.18696, -1.4012744, 36.247345)
+mesh = ExtResource("11_8xnqn")
+skeleton = NodePath("../../Terreno2/StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arvores/ArvoreColossal6/ArvoreColossal6" unique_id=915676841]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/ArvoreColossal6/ArvoreColossal6/StaticBody3D" unique_id=1663802387]
 shape = SubResource("ConcavePolygonShape3D_w42ul")
 
 [node name="ArvoreColossal12" type="MeshInstance3D" parent="Arvores" unique_id=1406574407]
@@ -415,6 +501,21 @@ shape = SubResource("ConcavePolygonShape3D_8xnqn")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/ArvoreReta6/StaticBody3D2" unique_id=104511687]
 shape = SubResource("ConcavePolygonShape3D_8xnqn")
 
+[node name="ArvoreReta6" type="MeshInstance3D" parent="Arvores/ArvoreReta6" unique_id=889368815]
+transform = Transform3D(1.1109912, 0, 2.7867002, 0, 3, 0, -2.7867002, 0, 1.1109912, 53.603413, 2.112442, -26.593945)
+mesh = ExtResource("10_cp7ig")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arvores/ArvoreReta6/ArvoreReta6" unique_id=1412907908]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/ArvoreReta6/ArvoreReta6/StaticBody3D" unique_id=117137068]
+shape = SubResource("ConcavePolygonShape3D_8xnqn")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Arvores/ArvoreReta6/ArvoreReta6" unique_id=483571739]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/ArvoreReta6/ArvoreReta6/StaticBody3D2" unique_id=2143100772]
+shape = SubResource("ConcavePolygonShape3D_8xnqn")
+
 [node name="SuperArvore5" type="MeshInstance3D" parent="Arvores" unique_id=738046737]
 transform = Transform3D(-1.4084194, 0, 0.7591805, 0, 1.6, 0, -0.7591805, 0, -1.4084194, 10.807573, -2.457233, 25.041288)
 mesh = ExtResource("9_1fe1v")
@@ -546,6 +647,16 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/ArvorePequena7/StaticBody3D" unique_id=237999943]
 shape = SubResource("ConcavePolygonShape3D_kimso")
 
+[node name="ArvorePequena7" type="MeshInstance3D" parent="Arvores/ArvorePequena7" unique_id=1657957393]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 109.856186, -1.9323517, -89.475815)
+mesh = ExtResource("3_kimso")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arvores/ArvorePequena7/ArvorePequena7" unique_id=1751400651]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arvores/ArvorePequena7/ArvorePequena7/StaticBody3D" unique_id=402842641]
+shape = SubResource("ConcavePolygonShape3D_kimso")
+
 [node name="ArvorePequena5" type="MeshInstance3D" parent="Arvores" unique_id=1915153878]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.19286, -3.5021286, -11.703081)
 mesh = ExtResource("3_kimso")
@@ -637,10 +748,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2040749, 0.70672876, 41.295
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8107686, 0, 0)
 shape = SubResource("SphereShape3D_mgr0g")
 
-[node name="Montanhas" type="MeshInstance3D" parent="." unique_id=1365000608]
-transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, -234.63814, -6.0959826, -6.0250397)
-mesh = ExtResource("17_2w74y")
-
 [node name="lampiaopegar" type="Area3D" parent="." unique_id=698725511]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.664002, 0, 39.439194)
 
@@ -665,10 +772,20 @@ visible = false
 [node name="jaderson pai" parent="." unique_id=1851750971 instance=ExtResource("19_1obli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1813645, 2.3277962, 15.367726)
 
+[node name="Itens" type="Node3D" parent="." unique_id=1204145697]
+
+[node name="Itenspegar" parent="Itens" unique_id=1626472242 instance=ExtResource("19_ck6ot")]
+
+[node name="BikeDoJaiden" type="MeshInstance3D" parent="." unique_id=1057839604]
+transform = Transform3D(-0.001497807, -0.07111872, -0.21872334, 0.0046054022, 0.21867481, -0.0711345, 0.229949, -0.004842846, -1.005139e-08, -7.3733377, 1.5622919, 47.473335)
+mesh = ExtResource("20_ck6ot")
+
 [connection signal="body_entered" from="Fogueira/ligarlampiao" to="." method="_on_ligarlampiao_body_entered"]
 [connection signal="body_exited" from="Fogueira/ligarlampiao" to="." method="_on_ligarlampiao_body_exited"]
 [connection signal="body_entered" from="lampiaopegar" to="." method="_on_lampiaopegar_body_entered"]
 [connection signal="body_exited" from="lampiaopegar" to="." method="_on_lampiaopegar_body_exited"]
+[connection signal="body_entered" from="Itens/Itenspegar" to="." method="_on_itenspegar_body_entered"]
+[connection signal="body_exited" from="Itens/Itenspegar" to="." method="_on_itenspegar_body_exited"]
 
 [editable path="CharacterBody3D"]
 [editable path="CanvasLayer"]
