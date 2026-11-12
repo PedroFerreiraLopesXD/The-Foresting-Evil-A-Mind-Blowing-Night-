@@ -5,6 +5,7 @@ extends Node3D
 @onready var player = $CharacterBody3D
 @onready var fogo = $Fogueira
 
+
 var distancia_max := 2.0
 var pode_pegar = false
 var pegou = false
@@ -14,6 +15,7 @@ var pode_ligar = false
 func _ready() -> void:
 	label.hide()
 	lampiada.hide()
+	print("lampiao: ", lampiao, " | player: ", player)
 
 # Entrando na zona que pode pegar
 func _on_lampiaopegar_body_entered(body: Node3D) -> void:

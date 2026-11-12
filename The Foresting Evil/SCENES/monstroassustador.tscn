@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://wbwtqr3v7o6f"]
 
 [ext_resource type="Texture2D" uid="uid://bjp5t6npbfknb" path="res://ASSETS/frame_0_delay-0.15s.png" id="1_cku2m"]
+[ext_resource type="Script" uid="uid://c8qgqrq8nnmwp" path="res://SCRIPTS/scarymonster.gd" id="1_j55yv"]
 [ext_resource type="Texture2D" uid="uid://cykqm2km75da8" path="res://ASSETS/frame_1_delay-0.15s.png" id="2_amwa5"]
 [ext_resource type="Texture2D" uid="uid://cg52nclawlbxb" path="res://ASSETS/frame_2_delay-0.15s.png" id="3_j55yv"]
 [ext_resource type="Texture2D" uid="uid://dp7tybpk08jjo" path="res://ASSETS/frame_3_delay-0.15s.png" id="4_p756s"]
@@ -26,30 +27,46 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_amwa5"]
-radius = 1.4155273
-height = 6.012207
+[sub_resource type="SphereShape3D" id="SphereShape3D_p756s"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j55yv"]
+radius = 0.13769531
+height = 1.5194855
 
 [node name="jaderson pai" type="CharacterBody3D" unique_id=1851750971]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_j55yv")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=1909309222]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite3D" parent="Node3D" unique_id=271187467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 2
 sprite_frames = SubResource("SpriteFrames_b3agr")
 animation = &"morte"
 autoplay = "morte"
 frame_progress = 0.328704
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=810403224]
-path_desired_distance = 5.0
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=30723547]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.719287, 0)
 stream = ExtResource("5_amwa5")
+volume_db = 80.0
 pitch_scale = 0.4
 autoplay = true
 max_distance = 10.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=262061663]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.977295, 0)
-shape = SubResource("CapsuleShape3D_amwa5")
+[node name="Area3DVision" type="Area3D" parent="." unique_id=2082488803]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DVision" unique_id=981646320]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
+shape = SubResource("SphereShape3D_p756s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=637603595]
+transform = Transform3D(0.72103715, 0, 0, 0, 0.72103715, 0, 0, 0, 0.72103715, 0, -1.8763528, 0)
+shape = SubResource("CapsuleShape3D_j55yv")
+
+[connection signal="body_entered" from="Area3DVision" to="." method="_on_area_3d_vision_body_entered"]
+[connection signal="body_exited" from="Area3DVision" to="." method="_on_area_3d_vision_body_exited"]
