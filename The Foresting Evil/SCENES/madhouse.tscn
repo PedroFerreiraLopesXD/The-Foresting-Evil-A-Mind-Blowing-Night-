@@ -18,6 +18,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cj2t076bbgs1b" path="res://ASSETS/3DMODELS/montanhas.obj" id="17_2w74y"]
 [ext_resource type="ArrayMesh" uid="uid://dp5vp3qvidklg" path="res://ASSETS/3DMODELS/LAMPIAO.obj" id="17_mgr0g"]
 [ext_resource type="PackedScene" uid="uid://bxo21pth61vex" path="res://SCENES/lampiada.tscn" id="18_mgr0g"]
+[ext_resource type="PackedScene" uid="uid://wbwtqr3v7o6f" path="res://SCENES/monstroassustador.tscn" id="19_1obli"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g644h"]
 sky_top_color = Color(1, 0, 0, 1)
@@ -108,16 +109,16 @@ environment = SubResource("Environment_bljox")
 [node name="CharacterBody3D" parent="." unique_id=1720337367 instance=ExtResource("1_0h1g7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0788994, 44.577374)
 
-[node name="SpotLight3D" parent="CharacterBody3D/cabeça/Camera3D" parent_id_path=PackedInt32Array(1720337367, 1033830822) index="1" unique_id=1013232589]
-visible = false
-
-[node name="SpotLight3D2" parent="CharacterBody3D/cabeça/Camera3D" parent_id_path=PackedInt32Array(1720337367, 1033830822) index="2" unique_id=1195282820]
-visible = false
-
-[node name="Label3D" parent="CharacterBody3D/cabeça/Camera3D" parent_id_path=PackedInt32Array(1720337367, 1033830822) index="3" unique_id=207887934]
+[node name="Label3D" parent="CharacterBody3D/cabeça/Camera3D" parent_id_path=PackedInt32Array(1720337367, 1033830822) index="0" unique_id=207887934]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.33617544, -1.0896759)
 visible = false
 ignore_occlusion_culling = true
+
+[node name="SpotLight3D" parent="CharacterBody3D/cabeça/Camera3D" parent_id_path=PackedInt32Array(1720337367, 1033830822) index="2" unique_id=1013232589]
+visible = false
+
+[node name="SpotLight3D2" parent="CharacterBody3D/cabeça/Camera3D" parent_id_path=PackedInt32Array(1720337367, 1033830822) index="3" unique_id=1195282820]
+visible = false
 
 [node name="Snow" parent="CharacterBody3D" unique_id=691184092 instance=ExtResource("2_sirdb")]
 transform = Transform3D(9.811201, 11.916896, -12.717238, -3.427217, 15.628185, 12.00059, 17.08785, -3.7077723, 9.708651, 0, 1.6059668, -1.1124755)
@@ -660,6 +661,9 @@ font_size = 100
 
 [node name="lampiada" parent="." unique_id=1312728241 instance=ExtResource("18_mgr0g")]
 visible = false
+
+[node name="jaderson pai" parent="." unique_id=1851750971 instance=ExtResource("19_1obli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1813645, 2.3277962, 15.367726)
 
 [connection signal="body_entered" from="Fogueira/ligarlampiao" to="." method="_on_ligarlampiao_body_entered"]
 [connection signal="body_exited" from="Fogueira/ligarlampiao" to="." method="_on_ligarlampiao_body_exited"]
